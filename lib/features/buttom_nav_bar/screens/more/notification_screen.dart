@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../core/resources/app_colors.dart';
+import '../../../../../core/resources/app_colors.dart';
 
 class NotificationsScreen extends StatelessWidget {
   const NotificationsScreen({super.key});
@@ -13,9 +13,10 @@ class NotificationsScreen extends StatelessWidget {
     ];
 
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: AppColors.primaryColor,
-        title: const Text(
+        title: Text(
           "Notifications",
           style: TextStyle(color: Colors.white),
         ),
@@ -23,15 +24,15 @@ class NotificationsScreen extends StatelessWidget {
       ),
       body: ListView.separated(
         itemCount: notifications.length,
-        separatorBuilder: (_, __) => const Divider(),
+        separatorBuilder: (_, __) => Divider(),
         itemBuilder: (context, index) {
           return ListTile(
-            leading: const Icon(
+            leading: Icon(
               Icons.notifications,
               color: AppColors.primaryColor,
             ),
             title: Text(notifications[index]),
-            subtitle: const Text("Just now"),
+            subtitle:  Text("Just now"),
           );
         },
       ),

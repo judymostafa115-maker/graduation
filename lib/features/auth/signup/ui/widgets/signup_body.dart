@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
-import '../../../../core/resources/app_colors.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:medical_app/features/auth/data/model/auth_model.dart';
+import 'package:medical_app/features/auth/manager/auth_cubit.dart';
+
+import '../../../../../core/resources/app_colors.dart';
+import '../../../manager/auth_state.dart';
 
 class SignupBody extends StatefulWidget {
   const SignupBody({super.key});
@@ -27,10 +32,10 @@ class _SignupBodyState extends State<SignupBody> {
         key: _formKey,
         child: Column(
           children: [
-            const SizedBox(height: 10),
+             SizedBox(height: 10),
 
-            /// Title
-            const Text(
+
+             Text(
               "Create Account",
               style: TextStyle(
                 fontSize: 26,
@@ -39,58 +44,53 @@ class _SignupBodyState extends State<SignupBody> {
               ),
             ),
 
-            const SizedBox(height: 4),
+            SizedBox(height: 4),
 
-            const Text(
+            Text(
               "Welcome To Our Application",
               style: TextStyle(
                 fontSize: 13,
                 color: AppColors.textGrey,
               ),
             ),
-
-            const SizedBox(height: 35),
-
-            /// Full Name
+            SizedBox(height: 35),
             TextFormField(
               controller: nameController,
               decoration: InputDecoration(
                 hintText: "Full Name",
                 prefixIcon:
-                const Icon(Icons.person, color: AppColors.primaryColor),
+                 Icon(Icons.person, color: AppColors.primaryColor),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
                   borderSide:
-                  const BorderSide(color: AppColors.fieldBorder),
+                  BorderSide(color: AppColors.fieldBorder),
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
                   borderSide:
-                  const BorderSide(color: AppColors.primaryColor),
+                  BorderSide(color: AppColors.primaryColor),
                 ),
               ),
               validator: (v) =>
               v == null || v.isEmpty ? "Name is required" : null,
             ),
 
-            const SizedBox(height: 18),
-
-            /// Email
+            SizedBox(height: 18),
             TextFormField(
               controller: emailController,
               decoration: InputDecoration(
                 hintText: "Email",
                 prefixIcon:
-                const Icon(Icons.email, color: AppColors.primaryColor),
+                 Icon(Icons.email, color: AppColors.primaryColor),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
                   borderSide:
-                  const BorderSide(color: AppColors.fieldBorder),
+                  BorderSide(color: AppColors.fieldBorder),
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
                   borderSide:
-                  const BorderSide(color: AppColors.primaryColor),
+                   BorderSide(color: AppColors.primaryColor),
                 ),
               ),
               validator: (v) {
@@ -100,16 +100,14 @@ class _SignupBodyState extends State<SignupBody> {
               },
             ),
 
-            const SizedBox(height: 18),
-
-            /// Password
+            SizedBox(height: 18),
             TextFormField(
               controller: passwordController,
               obscureText: obscureText,
               decoration: InputDecoration(
                 hintText: "Password",
                 prefixIcon:
-                const Icon(Icons.lock, color: AppColors.primaryColor),
+                Icon(Icons.lock, color: AppColors.primaryColor),
                 suffixIcon: IconButton(
                   icon: Icon(
                     obscureText
@@ -126,12 +124,12 @@ class _SignupBodyState extends State<SignupBody> {
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
                   borderSide:
-                  const BorderSide(color: AppColors.fieldBorder),
+                  BorderSide(color: AppColors.fieldBorder),
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
                   borderSide:
-                  const BorderSide(color: AppColors.primaryColor),
+                  BorderSide(color: AppColors.primaryColor),
                 ),
               ),
               validator: (v) {
@@ -145,51 +143,51 @@ class _SignupBodyState extends State<SignupBody> {
               },
             ),
 
-            const SizedBox(height: 18),
+            SizedBox(height: 18),
 
             /// Address
             TextFormField(
               controller: addressController,
               decoration: InputDecoration(
                 hintText: "Address",
-                prefixIcon: const Icon(Icons.location_on,
+                prefixIcon: Icon(Icons.location_on,
                     color: AppColors.primaryColor),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
                   borderSide:
-                  const BorderSide(color: AppColors.fieldBorder),
+                  BorderSide(color: AppColors.fieldBorder),
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
                   borderSide:
-                  const BorderSide(color: AppColors.primaryColor),
+                  BorderSide(color: AppColors.primaryColor),
                 ),
               ),
               validator: (v) =>
               v == null || v.isEmpty ? "Address is required" : null,
             ),
 
-            const SizedBox(height: 18),
+            SizedBox(height: 18),
 
-            /// Role
+
             DropdownButtonFormField<String>(
               value: selectedRole,
               decoration: InputDecoration(
                 hintText: "Role",
                 prefixIcon:
-                const Icon(Icons.work, color: AppColors.primaryColor),
+                Icon(Icons.work, color: AppColors.primaryColor),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
                   borderSide:
-                  const BorderSide(color: AppColors.fieldBorder),
+                   BorderSide(color: AppColors.fieldBorder),
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
                   borderSide:
-                  const BorderSide(color: AppColors.primaryColor),
+                  BorderSide(color: AppColors.primaryColor),
                 ),
               ),
-              items: const [
+              items: [
                 DropdownMenuItem(
                   value: "Doctor",
                   child: Text("Doctor"),
@@ -202,38 +200,52 @@ class _SignupBodyState extends State<SignupBody> {
               onChanged: (v) => setState(() => selectedRole = v!),
             ),
 
-            const SizedBox(height: 30),
-
-            /// Sign Up Button
+            SizedBox(height: 30),
             SizedBox(
               width: double.infinity,
               height: 52,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.primaryColor,
-                  elevation: 0,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                ),
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    Navigator.pop(context);
-                  }
-                },
-                child: const Text(
-                  "Sign Up",
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w500,
-                    color:Colors.white
+              child: BlocBuilder<AuthCubit, AuthState>(
+                builder: (context, state) {
+                  if(state is AuthLoading){
+                   return  CircularProgressIndicator();
+                  }else{
+                    return ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: AppColors.primaryColor,
+                        elevation: 0,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                      ),
+                      onPressed: () {
+                        if (_formKey.currentState!.validate()) {
+                          context.read<AuthCubit>().signup(
+                            AuthModel(
+                              email: emailController.text.trim(),
+                              password: passwordController.text.trim(), name: '', role: '', address: '',
+                            ),
+                          );
+                        }
+                      },
 
-                  ),
-                ),
+                      child:  Text(
+                        "Sign Up",
+                        style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.white
+
+                        ),
+                      ),
+                    );
+
+                  }
+
+                },
               ),
             ),
 
-            const SizedBox(height: 20),
+             SizedBox(height: 20),
           ],
         ),
       ),

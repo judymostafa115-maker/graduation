@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/resources/app_colors.dart';
-import '../../../login/ui/screens/login_screen.dart';
+import '../../../core/resources/app_colors.dart';
+import '../../auth/login/ui/screens/login_screen.dart';
 
 
 void showLogoutDialog(BuildContext context) {
   showDialog(
     context: context,
     builder: (_) => AlertDialog(
+      backgroundColor: Colors.white,
       title: const Text("Logout"),
       content: const Text("Do you want to logout?"),
       actions: [
@@ -15,7 +16,7 @@ void showLogoutDialog(BuildContext context) {
           onPressed: () {
             Navigator.pop(context); // close dialog
           },
-          child: const Text("Cancel",style: TextStyle(color: Colors.white),),
+          child: const Text("Cancel",style: TextStyle(color:AppColors.primaryColor),),
         ),
         ElevatedButton(
           style: ElevatedButton.styleFrom(

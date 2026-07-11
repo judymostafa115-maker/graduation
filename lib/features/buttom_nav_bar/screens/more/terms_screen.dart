@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../core/resources/app_colors.dart';
+import '../../../../core/resources/app_colors.dart';
 
 class TermsScreen extends StatelessWidget {
   const TermsScreen({super.key});
@@ -12,12 +12,12 @@ class TermsScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: AppColors.primaryColor,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.white),
+          icon: Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () {
             Navigator.pop(context);
           },
         ),
-        title: const Text(
+        title: Text(
           "Terms & Conditions",
           style: TextStyle(color: Colors.white),
         ),

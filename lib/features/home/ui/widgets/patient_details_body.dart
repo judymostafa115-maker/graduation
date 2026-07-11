@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/resources/app_colors.dart';
 import '../../data/model/patient_model.dart';
+import '../../manager/patient_cubit.dart';
 
 class PatientDetailsBody extends StatefulWidget {
   final Patient patient;
@@ -204,8 +206,9 @@ class _PatientDetailsBodyState
                 ),
               ),
               onPressed: () {
-                widget.onUpdate();
+                context.read<PatientCubit>().updatePatient(widget.patient);
                 Navigator.pop(context);
+
               },
               child: const Text(
                 "Update",

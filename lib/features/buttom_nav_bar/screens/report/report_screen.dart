@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../../../../core/resources/app_colors.dart';
-import '../../home/data/model/patient_model.dart';
-import '../../home/data/model/report_model.dart';
-import '../../home/ui/widgets/report_item.dart';
+import '../../../../../core/resources/app_colors.dart';
+import '../../../home/data/model/patient_model.dart';
+import '../../model/report_model.dart';
+import '../../widgets/report_item.dart';
 
 class ReportsScreen extends StatelessWidget {
   final List<Patient> patients;

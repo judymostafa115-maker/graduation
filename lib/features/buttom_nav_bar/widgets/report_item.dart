@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/resources/app_colors.dart';
-import '../../data/model/report_model.dart';
+import '../../../core/resources/app_colors.dart';
+import '../model/report_model.dart';
 
 class ReportItem extends StatelessWidget {
   final ReportModel report;

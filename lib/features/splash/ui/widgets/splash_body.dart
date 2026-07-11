@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/resources/app_images.dart';
-import '../../../login/ui/screens/login_screen.dart';
+import '../../../auth/login/ui/screens/login_screen.dart';
 
 class SplashBody extends StatefulWidget {
   const SplashBody({super.key});
@@ -23,7 +23,7 @@ class _SplashBodyState extends State<SplashBody>
 
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 2),
+      duration:  Duration(seconds: 2),
     );
 
     _slideAnimation1 = Tween<Offset>(
@@ -34,7 +34,7 @@ class _SplashBodyState extends State<SplashBody>
     );
 
     _slideAnimation2 = Tween<Offset>(
-      begin: const Offset(0, 1),
+      begin: Offset(0, 1),
       end: Offset.zero,
     ).animate(
       CurvedAnimation(parent: _controller, curve: Curves.easeOut),
@@ -43,11 +43,11 @@ class _SplashBodyState extends State<SplashBody>
     _controller.forward();
 
     /// Navigate after delay
-    Future.delayed(const Duration(seconds: 4), () {
+    Future.delayed( Duration(seconds: 4), () {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (_) => const LoginScreen(),
+          builder: (_) => LoginScreen(),
         ),
       );
     });
@@ -71,14 +71,7 @@ class _SplashBodyState extends State<SplashBody>
             /// Logo animation
             SlideTransition(
               position: _slideAnimation1,
-          // child: Container(
-          //   width: 200,
-          //   height: 100,
-          //   decoration: BoxDecoration(
-          //     image:DecorationImage(fit: BoxFit.fill,
-          //         image: AssetImage(AppImages.logo) ),
-          //   ),
-          // ),
+
               child: Image.asset(
                 AppImages.logo,
                 width: 300,
@@ -88,15 +81,10 @@ class _SplashBodyState extends State<SplashBody>
 
               ),
 
-
-
-
-            const SizedBox(height: 15),
-
-
+            SizedBox(height: 15),
             SlideTransition(
               position: _slideAnimation2,
-              child: const Text(
+              child:  Text(
                 "WELCOME",
                 style: TextStyle(
                   fontSize: 25,

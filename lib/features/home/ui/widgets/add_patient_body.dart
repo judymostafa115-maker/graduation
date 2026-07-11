@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/resources/app_colors.dart';
 import '../../data/model/patient_model.dart';
+import '../../data/repo/patient_repo.dart';
+import '../../manager/patient_cubit.dart';
 
 
 class AddPatientBody extends StatefulWidget {
@@ -29,7 +32,7 @@ class _AddPatientBodyState extends State<AddPatientBody> {
           key: _formKey,
           child: Column(
             children: [
-              /// NAME
+
               TextFormField(
                 controller: nameController,
                 decoration:
@@ -137,18 +140,19 @@ class _AddPatientBodyState extends State<AddPatientBody> {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.primaryColor,
                   ),
-                  onPressed: () {
+                  onPressed: () async {
                     if (_formKey.currentState!.validate()) {
-                      Navigator.pop(
-                        context,
-                        Patient(
-                          name: nameController.text,
-                          birthDate: selectedDate!,
-                          address: addressController.text,
-                          diagnoses: [diagnosisController.text],
-
-                        ),
+                      final patient = Patient(
+                      id: "",
+                      name: nameController.text,
+                      birthDate: selectedDate!,
+                      address: addressController.text,
+                      diagnoses: [diagnosisController.text],
                       );
+
+                      await PatientRepo.addPatient(patient);
+
+                      Navigator.pop(context);
                     }
                   },
                   child: const Text("Add"),

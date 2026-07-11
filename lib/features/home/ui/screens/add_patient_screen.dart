@@ -12,7 +12,7 @@ class AddPatientScreen extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: AppColors.primaryColor,
           leading: IconButton(
-            icon: const Icon(Icons.arrow_back, color: Colors.white),
+            icon: Icon(Icons.arrow_back, color: Colors.white),
             onPressed: () {
               Navigator.pop(context);
             },

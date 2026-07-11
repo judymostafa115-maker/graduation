@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-
 import '../../../../core/resources/app_colors.dart';
 import '../../data/model/patient_model.dart';
 import '../screens/patient_details_screen.dart';
-
 
 class HomeBody extends StatelessWidget {
   final List<Patient> patients;
@@ -33,39 +31,35 @@ class HomeBody extends StatelessWidget {
             );
           },
           child: Container(
-            margin: const EdgeInsets.only(bottom: 12),
-            padding: const EdgeInsets.all(16),
+            margin:  EdgeInsets.only(bottom: 12),
+            padding: EdgeInsets.all(16),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),
               color: AppColors.primaryColor,
-              boxShadow: const [
+              boxShadow:  [
                 BoxShadow(color: Colors.black12, blurRadius: 4)
               ],
             ),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment:
+              CrossAxisAlignment.start,
               children: [
-
                 Text(
                   patient.name,
-                  style: const TextStyle(
+                  style:  TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-
-                const SizedBox(height: 6),
-
-
+                 SizedBox(height: 6),
                 Text(
                   "Birth Date: ${patient.birthDate.toString().split(' ')[0]}",
-                  style: const TextStyle(fontSize: 14),
+                  style:  TextStyle(fontSize: 14),
                 ),
                 Text(
                   "Diagnosis: ${patient.diagnoses.isNotEmpty ? patient.diagnoses.first : "No diagnosis"}",
-                  style: const TextStyle(fontSize: 14),
+                  style:  TextStyle(fontSize: 14),
                 ),
-
               ],
             ),
           ),
