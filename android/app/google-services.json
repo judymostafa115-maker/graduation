@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "906745171459",
+    "project_id": "graduation-6c4cf",
+    "storage_bucket": "graduation-6c4cf.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:906745171459:android:253924837ac515bea68836",
+        "android_client_info": {
+          "package_name": "com.example.medical_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAnT59Wu5suHojDCPNye1ViQYeVjURGaX4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
